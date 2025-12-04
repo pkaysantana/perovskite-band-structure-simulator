@@ -5,6 +5,13 @@ class MetalIon:
         self.coordination_number = coordination_number
         self.bound_ligands = []
 
+    def bind_ligand(self, ligand):
+        if len(self.bound_ligands) < self.coordination_number and ligand.lone_pairs > 0:
+            self.bound_ligands.append(ligand)
+            ligand.lone_pairs -= 1
+            return True
+        return False
+
 class Ligand:
     def __init__(self, name, lone_pairs):
         self.name = name
@@ -14,5 +21,9 @@ if __name__ == "__main__":
     al = MetalIon("Al", 3, coordination_number=6)
     water = Ligand("H2O", lone_pairs=2)
 
-    print(f"Metal ion: {al.element}³⁺, coordination = {al.coordination_number}")
-    print(f"Ligand: {water.name}, lone pairs = {water.lone_pairs}")
+    for _ in range(6):
+        al.bind_ligand(water)
+
+    print(f"Metal ion: {al.element}³+, coordination = {al.coordination_number}")
+    print(f"Number of bound ligands: {len(al.bound_ligands)}")
+    print(f"Lone pairs remaining on ligand: {water.lone_pairs}")
