@@ -12,10 +12,21 @@ class MetalIon:
             return True
         return False
 
+    def complex_formula(self):
+        if not self.bound_ligands:
+            return f"{self.element}^{self.charge}+"
+
+        # assume all ligands are same type for now
+        ligand_name = self.bound_ligands[0].name
+        n = len(self.bound_ligands)
+        return f"[{self.element}({ligand_name}){n}]{self.charge}+"
+
+
 class Ligand:
     def __init__(self, name, lone_pairs):
         self.name = name
         self.lone_pairs = lone_pairs
+
 
 if __name__ == "__main__":
     al = MetalIon("Al", 3, coordination_number=6)
@@ -24,6 +35,4 @@ if __name__ == "__main__":
     for _ in range(6):
         al.bind_ligand(water)
 
-    print(f"Metal ion: {al.element}³+, coordination = {al.coordination_number}")
-    print(f"Number of bound ligands: {len(al.bound_ligands)}")
-    print(f"Lone pairs remaining on ligand: {water.lone_pairs}")
+    print(al.complex_formula())  # e.g. [Al(H2O)6]
