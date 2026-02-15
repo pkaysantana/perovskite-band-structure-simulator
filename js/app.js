@@ -24,6 +24,9 @@ class SimulationEngine {
         this.distortedRenderer = new OrbitalRenderer('canvasDistorted');
         this.plotter = new BandPlotter('plotBandStructure');
 
+        // Track if plot has been initialized
+        this.plotInitialized = false;
+
         // Initialize UI
         this.initializeUI();
 
@@ -121,10 +124,20 @@ class SimulationEngine {
         );
 
         // Panel (c): Band structure - use current angle
-        this.plotter.update(
-            this.results.distorted.bands[0],
-            this.results.distorted.bands[1]
-        );
+        if (!this.plotInitialized) {
+            // First render: create the plot
+            this.plotter.plot(
+                this.results.distorted.bands[0],
+                this.results.distorted.bands[1]
+            );
+            this.plotInitialized = true;
+        } else {
+            // Subsequent renders: update with animation
+            this.plotter.update(
+                this.results.distorted.bands[0],
+                this.results.distorted.bands[1]
+            );
+        }
 
         // Update stats display
         this.updateStats();

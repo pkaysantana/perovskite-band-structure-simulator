@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Perovskite Band Structure Simulator</h1>
-            <p class="subtitle">Interactive Orbital Overlap & Electronic Structure Visualization</p>
+            <p class="subtitle">Interactive Orbital Overlap & Electronic Structure Visualisation</p>
         </header>
 
         <!-- Control Panel -->
@@ -23,15 +25,7 @@
                 <label for="angleSlider">
                     B–O–B Angle: <span id="angleValue">180</span>°
                 </label>
-                <input 
-                    type="range" 
-                    id="angleSlider" 
-                    min="140" 
-                    max="180" 
-                    value="180" 
-                    step="1"
-                    class="slider"
-                >
+                <input type="range" id="angleSlider" min="140" max="180" value="180" step="1" class="slider">
                 <div class="angle-labels">
                     <span>140° (Highly Distorted)</span>
                     <span>180° (Cubic)</span>
@@ -132,7 +126,8 @@
         <!-- Info Footer -->
         <footer>
             <p>
-                <strong>Physics Model:</strong> 2-band tight-binding Hamiltonian with Harrison's d<sup>-3.5</sup> scaling law.
+                <strong>Physics Model:</strong> 2-band tight-binding Hamiltonian with Harrison's d<sup>-3.5</sup>
+                scaling law.
                 Real-time client-side computation validated against Python reference implementation.
             </p>
         </footer>
@@ -144,4 +139,5 @@
     <script src="js/plotter.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>
