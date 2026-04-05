@@ -334,7 +334,7 @@ def plot_cf_bands(delta_cf=DELTA_CF, theta=180.0, n_k=80,
             fontsize=8, color='#2E7D32', va='center')
 
     # Arrow: Δ_CF (t₂g → e_g, at R where e_g = E_eg exactly)
-    r_idx = 3 * (len(x) // 4)   # approximate R-point position
+    r_idx = ticks[3]   # exact R-point position from make_kpath
     ax.annotate('', xy=(r_idx, e_eg), xytext=(r_idx, e_t2g),
                 arrowprops=dict(arrowstyle='<->', color='#C62828', lw=1.5))
     ax.text(r_idx + 3, (e_eg + e_t2g) / 2,
